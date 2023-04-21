@@ -1,18 +1,19 @@
-setwd("~/code/R/forecasts")
+setwd("~/code/R/CISSM-EDA")
 
+library(forecast)
+library(fpp2)
 library(ggpubr)
 library(janitor)
 library(tidyverse)
 library(tsibble)
+library(TTR)
 
 # References:
 # https://www.marsja.se/r-count-the-number-of-occurrences-in-a-column-using-dplyr/ 
 # https://stackoverflow.com/questions/55303573/count-new-values-per-date-per-group
 # https://www.infoworld.com/article/3573577/how-to-count-by-groups-in-r.html
 
-df <- read.csv("CISSM-export.csv")
-
-str(df)
+df <- read_csv("CISSM-export.csv")
 
 evtType <- tabyl(df, evtDate, event_type)
 

@@ -1,4 +1,4 @@
-setwd("~/code/R/janitor")
+setwd("~/code/R/CISSM-EDA")
 
 library(CGPfunctions)
 library(janitor)
@@ -36,12 +36,11 @@ tabyl(df, event_type, motive, evtDate) %>%
   adorn_percentages("col") %>%
   adorn_pct_formatting(digits = 1)
 
-PlotXTabs(df, evtDate, event_type)
-PlotXTabs(df, evt_type, evtDate)
+PlotXTabs(df, event_type, motive)
 
 vtree(df, "event_type")
-vtree(df, "motive")
-vtree(df, c("event_type", "actor_type"),
-      fillcolor = c( event_type = "#e7d4e8", actor_type = "#99d8c9"),
-      horiz = FALSE)
+vtree(df, "motive", showcount = FALSE)
+vtree(df, c("event_type", "motive"), showcount = FALSE)
+vtree(df, c("event_type", "motive"), horiz = FALSE, showcount = FALSE)
+vtree(df, c("event_type", "event_subtype"), horiz = FALSE, showcount = FALSE)
 
