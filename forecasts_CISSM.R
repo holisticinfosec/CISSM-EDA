@@ -49,8 +49,6 @@ summary(arima_model_exploitative)
 
 # plot
 
-# https://community.rstudio.com/t/can-not-use-autoplot-with-a-tsibble/41297
-
 # plot all event types
 autoplot(as.ts(AllEvents))
 
@@ -67,8 +65,8 @@ naiveDIS = forecast(naive_model_disruptive) %>% autoplot()
 sesDIS = forecast(ses_model_disruptive) %>% autoplot()
 arimaDIS = forecast(arima_model_disruptive) %>% autoplot()
 
-multi.pageDIS <- ggarrange(naiveDIS, sesDIS, arimaDIS,
-                        nrow = 3, ncol = 1)
+multi.pageDIS <- ggarrange(naiveDIS, sesDIS, arimaDIS, nrow = 3, ncol = 1)
+multi.pageDIS
 
 # plot exploitative events only
 autoplot(as.ts(exploitative))
@@ -78,10 +76,10 @@ forecast(naive_model_exploitative) %>% autoplot()
 forecast(ses_model_exploitative) %>% autoplot()
 forecast(arima_model_exploitative) %>% autoplot()
 
-# forecast disruptive models with joined plot
+# forecast exploitative models with joined plot
 naiveEXP = forecast(naive_model_exploitative) %>% autoplot()
 sesEXP = forecast(ses_model_exploitative) %>% autoplot()
 arimaEXP = forecast(arima_model_exploitative) %>% autoplot()
 
-multi.pageEXP <- ggarrange(naiveEXP, sesEXP, arimaEXP,
-                        nrow = 3, ncol = 1)
+multi.pageEXP <- ggarrange(naiveEXP, sesEXP, arimaEXP, nrow = 3, ncol = 1)
+multi.pageEXP
